@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron">
+        <h1>Stocks & Cash you own</h1>
+    </div>
+    <div class="container">
+        <div class="section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Shares</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- TODO: Loop through the database entries to display them in this table -->
+                    {% for rw in rows_stocks %}
+                        <tr>
+                            <td class="text-left">{{rw.symbol}}</td>
+                            <td>{{rw.name}}</td>
+                            <td>{{rw.shares}}</td>
+                            <td>{{rw.price | usd}}</td>
+                            <td class="text-right">{{rw.total | usd}}</td>
+                        </tr>
+                    {% endfor %}
+
+                    {% for rw in rows %}
+                        <tr>
+                            <td colspan="4" class="text-left">{{rw.symbol}}</td>
+                            <td class="text-right font-weight-bold">{{rw.total | usd}}</td>
+                        </tr>
+                    {% endfor %}
+                        <tr>
+                            <td colspan="4" class="text-left">Total</td>
+                            <td class="text-right font-weight-bold">{{totalSharesValue | usd}}</td>
+                        </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

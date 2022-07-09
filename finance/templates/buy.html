@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron">
+        <h1>Buy</h1>
+    </div>
+    <form action="/buy" method="post" class="mb-5">
+        <div class="form-group">
+            <input autocomplete="off" autofocus
+            class="form-control text-uppercase text-center"
+            name="symbol" id="symbol" placeholder="Symbol" type="text" >
+        </div>
+        <div class="form-group">
+            <input type="number" min="1" max="99999"
+            class="form-control col-number"autocomplete="off"
+            autofocus name="shares" id="share"  maxlength="5" placeholder="Shares">
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+
+{% endblock %}

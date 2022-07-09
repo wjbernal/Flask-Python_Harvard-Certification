@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron">
+        <h1>Quote</h1>
+    </div>
+    <form action="/quote" method="post" class="mb-5">
+        <div class="form-group">
+            <input autocomplete="off" autofocus
+            class="form-control text-uppercase text-center"
+            name="symbol" id="symbol" placeholder="Symbol" type="text" >
+        </div>
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+
+    <div class="section">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8 text-center">
+                <h4 id="quoteResult" class="alert alert-info">{{quote_result}} </h3>
+            </div>
+        </div>
+    </div>
+    <script>
+       var quoteResult = document.getElementById("quoteResult").innerHTML;
+       if (quoteResult.length < 2){
+           document.getElementById("quoteResult").classList.remove("alert", "alert-info");
+       }
+       else{
+           document.getElementById("quoteResult").classList.remove("alert", "alert-info");
+           document.getElementById("quoteResult").classList.add("alert", "alert-info");
+       }
+    </script>
+
+{% endblock %}

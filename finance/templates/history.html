@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron">
+        <h1>Finance History</h1>
+    </div>
+    <div class="container">
+        <div class="section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Operation</th>
+                        <th>Shares</th>
+                        <th>Price</th>
+                        <th>Transacted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- TODO: Loop through the database entries to display them in this table -->
+                    {% for rw in rows_stocks %}
+                        <tr>
+                            <td class="text-left">{{rw.symbol}}</td>
+                            <td>{{rw.operation}}</td>
+                            <td>{{rw.shares}}</td>
+                            <td>{{rw.price | usd}}</td>
+                            <td>{{rw.transacted}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

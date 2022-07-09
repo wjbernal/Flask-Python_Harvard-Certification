@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron">
+        <h1>Sell</h1>
+    </div>
+    <form action="/sell" method="post" class="mb-5">
+        <div class="form-group">
+            <select name="symbol" class="form-control form-select" aria-label="Default select example">
+                <option selected>Select the stock to sell</option>
+                  {% for rw in rows_stocks %}
+                    <option value="{{rw.symbol}}">{{rw.symbol}}</option>
+                  {% endfor%}
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="number" min="1" max="99999"
+            class="form-control col-number"autocomplete="off"
+            autofocus name="shares" id="share"  maxlength="5" placeholder="Shares">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+
+{% endblock %}
